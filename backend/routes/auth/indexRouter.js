@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../../models/userModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { authMiddleware } = require('../../middlewares/authentication-middleware');
 
 // Registration Route
 router.post('/register', async (req, res) => {
@@ -45,6 +46,11 @@ router.post('/login', async (req, res) => {
         console.error(err);
         return res.status(500).send({ message: "Something went wrong" });
     }
+});
+
+
+router.get('/logout', authMiddleware, (req, res) => {
+    res.status(200).send({ message: 'Logged out successfully' });
 });
 
 module.exports = router;

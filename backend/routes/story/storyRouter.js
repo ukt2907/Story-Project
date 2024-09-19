@@ -95,10 +95,7 @@ router.post('/like/:id', authMiddleware, async (req, res) => {
 
 
 
-// Logout route
-router.post('/logout', authMiddleware, (req, res) => {
-    res.status(200).send({ message: 'Logged out successfully' });
-});
+
 
 
 
@@ -150,7 +147,7 @@ router.put('/bookmark/:id', authMiddleware, async (req, res) => {
             await story.save();
             return res.status(200).send({ message: 'Bookmark removed successfully', story });
         } else {
-            // Iagar nhi hai to add the bookmark
+            // agar nhi hai to add the bookmark
             story.bookmarks.push(userId);
             await story.save();
             return res.status(200).send({ message: 'Story bookmarked successfully', story });
@@ -161,17 +158,11 @@ router.put('/bookmark/:id', authMiddleware, async (req, res) => {
 });
 
 
-router.get('/stories', async (req, res) => {
+router.get('/category/:category', async (req, res) => {
     try {
-        const { category } = req.query;
+        const { category } = req.params;
 
-        // If category is provided, filter by category
-        let filter = {};
-        if (category) {
-            filter.category = category;
-        }
-
-        const stories = await Story.find(filter);
+        const stories = await Story.find({category});
         res.status(200).send({ stories });
     } catch (err) {
         res.status(500).send({ message: 'Error fetching stories', error: err.message });
