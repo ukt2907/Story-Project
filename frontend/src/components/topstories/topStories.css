@@ -1,0 +1,41 @@
+.story-card {
+    height: 60vh;
+    width: 350px;
+    overflow: hidden;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.story-heading{
+    text-align: center;
+    font-size: 4vw;
+}
+.story-card-content h2{
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'gilroy';
+    color: black;
+}
+
+.story-card img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.story-cards{
+    white-space: nowrap;
+   
+    gap: 20px;
+    display: flex;
+    padding-top: 10px;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+
+}
+
+
+

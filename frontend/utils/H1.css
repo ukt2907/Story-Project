@@ -1,0 +1,10 @@
+.story-heading{
+    text-align: center;
+    font-size: 4vw;
+    font-weight: bold;
+    font-family: 'gilroy';
+    @media screen and (max-width: 768px) {
+        font-size: 20px;
+        padding-top: 2vh;
+    }
+}
